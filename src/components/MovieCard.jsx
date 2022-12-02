@@ -1,6 +1,21 @@
 import React from "react";
 
-const MovieCard = ({ movie, movieList, page, setPage, list, addMovie }) => {
+const MovieCard = ({
+  movie,
+  list,
+  addMovie,
+  removeMovie,
+}) => {
+  const inWatchList = list.filter((mov) => {
+    return mov.id === movie.id;
+  });
+
+  const button = inWatchList.length === 0 ? (
+    <button onClick={() => addMovie(movie)}>Add to List</button>
+  ) : (
+    <button onClick={() => removeMovie(movie)}>Remove</button>
+  )
+
   return (
     <div className="movie-card">
       <div>
@@ -10,7 +25,7 @@ const MovieCard = ({ movie, movieList, page, setPage, list, addMovie }) => {
         />
         <h3>{movie.original_title}</h3>
       </div>
-      <button onClick={() => addMovie(movie)}>Add to List</button>
+      {button}
     </div>
   );
 };

@@ -1,7 +1,11 @@
+import React from "react";
+
 const Header = () => {
+  return(
   <header>
     <h2>Macey's Movie App</h2>
-  </header>;
+  </header>
+  )
 };
 
 export default Header;
